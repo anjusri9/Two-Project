@@ -12,6 +12,10 @@ jobs:
     - name: Install dependencies
       run: |
         pip install -r app/requirements.txt
+    - name: Start Flask API in background
+      run: |
+        python app/main.py &
+        sleep 5  # wait for server to start
     - name: Run tests
       run: |
         python -m unittest discover tests
