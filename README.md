@@ -34,9 +34,9 @@ terraform apply
 - GitHub Actions for test/build steps
 
 ## Design Decisions
-Flask was chosen for its simplicity in exposing a lightweight ML model as a REST API.
-Scikit-learn Pipeline ensures preprocessing and model are bundled together, preventing train–serve skew.
-Docker provides consistent, portable environments across development and deployment.
-Terraform automates cloud infrastructure provisioning in a reproducible, scalable way.
-GitHub Actions enables CI for testing and building on each code push.
-Versioning is handled via artifact (model_pipeline.joblib) and Docker image tags (e.g., :1.0.0).
+Flask was chosen for its simplicity in exposing a lightweight ML model as a REST API.  
+Scikit-learn Pipeline ensures preprocessing and model are bundled together, preventing train–serve skew.  
+Docker provides consistent, portable environments across development and deployment.  
+Terraform automates cloud infrastructure provisioning in a reproducible, scalable way.  
+GitHub Actions enables CI for testing and building on each code push.  
+Versioning is handled via artifact (model_pipeline.joblib) and Docker image tags (e.g., :1.0.0).  
