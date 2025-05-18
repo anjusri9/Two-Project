@@ -43,7 +43,6 @@ jobs:
           sudo service docker start
           sudo usermod -aG docker ec2-user
           sudo docker run -d -p 5000:5000 anjusri9/iris-api:1.0.0
-          # checking if API is running or not
           sleep 30
           curl -X POST http://localhost:5000/predict \
           -H "Content-Type: application/json" \
@@ -52,11 +51,6 @@ jobs:
       env:
         PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
 
-    - name: Verify Flask API is running
-      run: |
-        sleep 30
-        curl -X POST http://localhost:5000/predict \
-        -H "Content-Type: application/json" \
-        -d '{"sepal_length": 5.1, "sepal_width": 3.5, "petal_length": 1.4, "petal_width": 0.2}' 
+
 
 
