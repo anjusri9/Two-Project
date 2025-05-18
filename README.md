@@ -9,6 +9,10 @@ python model/train.py
 ```bash
 docker build -t iris-api:1.0.0 .
 docker run -p 5000:5000 iris-api:1.0.0
+
+# To push image for docker hub
+docker tag iris-api:1.0.0 anjusri9/iris-api:1.0.0
+docker push anjusri9/iris-api:1.0.0
 ```
 
 ## Testing the microservice (can use curl or postman to send request)
