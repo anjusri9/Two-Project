@@ -47,7 +47,6 @@ jobs:
         PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
 
     - name: Verify Flask API is running
-      shell: powershell
       run: |
         curl -X POST http://localhost:5000/predict \
         -H "Content-Type: application/json" \
