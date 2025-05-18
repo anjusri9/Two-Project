@@ -39,7 +39,7 @@ jobs:
         ssh -i key.pem -o StrictHostKeyChecking=no ec2-user@3.87.21.42 'bash -s' << 'ENDSSH'
           pkill -f main.py || true
           cd /home/ec2-user/app
-          python3 -m pip install -r app/requirements.txt
+          python3 -m pip install -r requirements.txt
           nohup python3 main.py > app.log 2>&1 &
         ENDSSH
       env:
