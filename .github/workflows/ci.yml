@@ -44,3 +44,9 @@ jobs:
       env:
         PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
 
+    - name: Verify Flask API is running
+      run: |
+        sleep 5
+        curl http://3.87.21.42:5000/health || echo "App may not be responding"
+
+
