@@ -31,10 +31,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Install dependencies
-      run: |
-        pip install -r app/requirements.txt
-
     - name: Deploy to EC2
       run: |
         echo "$PRIVATE_KEY" > key.pem
@@ -43,6 +39,7 @@ jobs:
         ssh -i key.pem -o StrictHostKeyChecking=no ec2-user@3.87.21.42 'bash -s' << 'ENDSSH'
           pkill -f main.py || true
           cd /home/ec2-user/app
+          pip install -r app/requirements.txt
           nohup python3 main.py > app.log 2>&1 &
         ENDSSH
       env:
