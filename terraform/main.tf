@@ -36,15 +36,17 @@ resource "aws_instance" "iris_api" {
 
   connection {
     type        = "ssh"
-    user        = "ubuntu"
+    user        = "ec2-user"
     private_key = file(var.private_key_path)
     host        = self.public_ip
   }
 
   provisioner "remote-exec" {
     inline = [
-      "sudo apt update",
-      "sudo apt install -y docker.io",
+      "sudo yum update -y",
+      "sudo yum install -y docker",
+      "sudo service docker start",
+      "sudo usermod -aG docker ec2-user",
       "sudo docker run -d -p 5000:5000 anjusri9/iris-api:1.0.0"
     ]
   }
